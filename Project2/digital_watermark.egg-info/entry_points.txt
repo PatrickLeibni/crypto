@@ -1,0 +1,4 @@
+[console_scripts]
+watermark-demo = examples.demo:main
+watermark-test = tests.test_installation:main
+

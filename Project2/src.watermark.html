@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module src.watermark</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="src.html"><font color="#ffffff">src</font></a>.watermark</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/data2/xps/crypto/Project2/src/watermark.py">/data2/xps/crypto/Project2/src/watermark.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="cv2.html">cv2</a><br>
+</td><td width="25%" valign=top><a href="hashlib.html">hashlib</a><br>
+</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="src.watermark.html#DigitalWatermark">DigitalWatermark</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DigitalWatermark">class <strong>DigitalWatermark</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#DigitalWatermark">DigitalWatermark</a>(alpha:&nbsp;float&nbsp;=&nbsp;0.1)<br>
+&nbsp;<br>
+数字水印系统&nbsp;-&nbsp;基于DCT变换的图片水印嵌入和提取<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="DigitalWatermark-__init__"><strong>__init__</strong></a>(self, alpha: float = 0.1)</dt><dd><tt>初始化水印系统<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alpha:&nbsp;水印强度参数&nbsp;(0.01-0.5)</tt></dd></dl>
+
+<dl><dt><a name="DigitalWatermark-calculate_similarity"><strong>calculate_similarity</strong></a>(self, watermark1: numpy.ndarray, watermark2: numpy.ndarray) -&gt; float</dt><dd><tt>计算两个水印的相似度<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;watermark1:&nbsp;第一个水印<br>
+&nbsp;&nbsp;&nbsp;&nbsp;watermark2:&nbsp;第二个水印<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;相似度&nbsp;(0-1)</tt></dd></dl>
+
+<dl><dt><a name="DigitalWatermark-detect_watermark"><strong>detect_watermark</strong></a>(self, image_path: str, original_size: Tuple[int, int], watermark_size: int, expected_message: str = None, threshold: float = 0.6, seed: int = 42) -&gt; Tuple[bool, float]</dt><dd><tt>检测图片中是否存在水印<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;image_path:&nbsp;待检测图片路径<br>
+&nbsp;&nbsp;&nbsp;&nbsp;original_size:&nbsp;原始图片尺寸<br>
+&nbsp;&nbsp;&nbsp;&nbsp;watermark_size:&nbsp;水印大小<br>
+&nbsp;&nbsp;&nbsp;&nbsp;expected_message:&nbsp;期望的水印消息<br>
+&nbsp;&nbsp;&nbsp;&nbsp;threshold:&nbsp;检测阈值<br>
+&nbsp;&nbsp;&nbsp;&nbsp;seed:&nbsp;随机种子<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(是否检测到水印,&nbsp;相似度)</tt></dd></dl>
+
+<dl><dt><a name="DigitalWatermark-embed_watermark"><strong>embed_watermark</strong></a>(self, image_path: str, message: str = None, output_path: str = None, seed: int = 42) -&gt; Tuple[numpy.ndarray, numpy.ndarray]</dt><dd><tt>嵌入水印到图片中<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;image_path:&nbsp;输入图片路径<br>
+&nbsp;&nbsp;&nbsp;&nbsp;message:&nbsp;水印消息<br>
+&nbsp;&nbsp;&nbsp;&nbsp;output_path:&nbsp;输出图片路径<br>
+&nbsp;&nbsp;&nbsp;&nbsp;seed:&nbsp;随机种子<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(原始图片,&nbsp;含水印图片)</tt></dd></dl>
+
+<dl><dt><a name="DigitalWatermark-extract_watermark"><strong>extract_watermark</strong></a>(self, image_path: str, original_size: Tuple[int, int], watermark_size: int, seed: int = 42) -&gt; numpy.ndarray</dt><dd><tt>从图片中提取水印<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;image_path:&nbsp;含水印图片路径<br>
+&nbsp;&nbsp;&nbsp;&nbsp;original_size:&nbsp;原始图片尺寸&nbsp;(height,&nbsp;width)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;watermark_size:&nbsp;水印大小<br>
+&nbsp;&nbsp;&nbsp;&nbsp;seed:&nbsp;随机种子<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;提取的水印序列</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>Tuple</strong> = typing.Tuple</td></tr></table>
+</body></html>
