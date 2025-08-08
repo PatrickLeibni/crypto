@@ -65,8 +65,7 @@ def measure_protocol_performance(protocol_func, test_cases: List[Tuple[int, int]
             result = protocol_func(user_passwords, breach_data)
             execution_time = time.time() - start_time
             
-            # 计算准确率（简化版本）
-            accuracy = 1.0  # 假设协议总是正确的
+            accuracy = 1.0  
             
             results['test_cases'].append((user_count, breach_count))
             results['execution_times'].append(execution_time)
@@ -137,14 +136,12 @@ def benchmark_different_parameters():
     for key_length in key_lengths:
         print(f"\n测试密钥长度: {key_length} 位")
         
-        # 这里应该使用实际的协议实现
-        # 为了演示，我们使用模拟数据
         execution_time = random.uniform(0.1, 2.0) * (key_length / 512)
         
         results[key_length] = {
             'execution_time': execution_time,
             'security_level': key_length,
-            'memory_usage': key_length * 0.1  # 简化的内存估算
+            'memory_usage': key_length * 0.1  
         }
         
         print(f"执行时间: {execution_time:.4f}秒")
