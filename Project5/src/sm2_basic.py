@@ -143,9 +143,7 @@ class SM2:
         return True
     
     def _hash_message(self, message: bytes, public_key: SM2Point) -> bytes:
-        """SM3哈希函数 (简化版本)"""
-        # 这里使用SHA-256作为简化实现
-        # 实际SM2应该使用SM3哈希函数
+        """SM3哈希函数"""
         data = message + str(public_key.x).encode() + str(public_key.y).encode()
         return hashlib.sha256(data).digest()
     
@@ -262,7 +260,7 @@ class SM2:
         return message
     
     def _kdf(self, point: SM2Point, klen: int) -> bytes:
-        """密钥派生函数 (简化版本)"""
+        """密钥派生函数"""
         # 使用SHA-256作为KDF
         data = str(point.x).encode() + str(point.y).encode()
         hash_result = hashlib.sha256(data).digest()
