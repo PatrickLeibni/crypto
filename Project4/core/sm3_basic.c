@@ -55,7 +55,7 @@ static uint32_t GG(uint32_t x, uint32_t y, uint32_t z, int j) {
     }
 }
 
-// Message expansion - 修复的实现
+// Message expansion 
 static void message_expansion(const uint8_t *block, uint32_t *W, uint32_t *W1) {
     uint32_t temp;
     
@@ -79,7 +79,7 @@ static void message_expansion(const uint8_t *block, uint32_t *W, uint32_t *W1) {
     }
 }
 
-// Compression function - 修复的实现
+// Compression function 
 static void compression_function(uint32_t *state, const uint8_t *block) {
     uint32_t W[68], W1[64];
     uint32_t A, B, C, D, E, F, G, H;
