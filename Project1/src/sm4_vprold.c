@@ -5,10 +5,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-// ============================================================================
-// 1. SM4 S盒定义
-// ============================================================================
-
+// 1. SM4 S-box 
 const uint8_t SM4_SBOX[256] = {
     0xd6,0x90,0xe9,0xfe,0xcc,0xe1,0x3d,0xb7,0x16,0xb6,0x14,0xc2,0x28,0xfb,0x2c,0x05,
     0x2b,0x67,0x9a,0x76,0x2a,0xbe,0x04,0xc3,0xaa,0x44,0x13,0x26,0x49,0x86,0x06,0x99,
@@ -28,10 +25,8 @@ const uint8_t SM4_SBOX[256] = {
     0x18,0xf0,0x7d,0xec,0x3a,0xdc,0x4d,0x20,0x79,0xee,0x5f,0x3e,0xd7,0xcb,0x39,0x48
 };
 
-// ============================================================================
-// 2. 基本SM4实现
-// ============================================================================
 
+// 2. 基本SM4实现
 static uint32_t rotl(uint32_t x, int n) {
     return (x << n) | (x >> (32 - n));
 }
@@ -121,12 +116,7 @@ void sm4_decrypt_basic(const uint8_t *key, const uint8_t *ciphertext, uint8_t *p
     sm4_crypt_ecb(ciphertext, plaintext, rk_reverse);
 }
 
-
-
-// ============================================================================
-// 3. VPROLD优化实现 (核心实现)
-// ============================================================================
-
+// 3. VPROLD优化实现
 int sm4_vprold_available(void) {
     unsigned int eax, ebx, ecx, edx;
     if (__get_cpuid(7, &eax, &ebx, &ecx, &edx)) {
@@ -135,7 +125,7 @@ int sm4_vprold_available(void) {
     return 0;
 }
 
-// VPROLD优化的循环左移函数
+// 循环左移函数
 static inline __m256i vprold_256(__m256i x, int n) {
     return _mm256_rol_epi32(x, n);
 }
@@ -144,10 +134,10 @@ static inline __m512i vprold_512(__m512i x, int n) {
     return _mm512_rol_epi32(x, n);
 }
 
-// VPROLD优化的T函数
+// T函数
 static __m256i sm4_t_vprold_256(__m256i x) {
     // 使用VPROLD进行向量化的T变换
-    __m256i sbox_out = x; // 简化的S盒替换
+    __m256i sbox_out = x; // S盒替换
     
     // 使用VPROLD进行循环左移
     __m256i rot2 = vprold_256(sbox_out, 2);
@@ -194,7 +184,7 @@ void sm4_encrypt_vprold(const uint8_t *key, const uint8_t *plaintext, uint8_t *c
         __m256i T_out = sm4_t_vprold_256(T_arg);
         X[0] = _mm256_xor_si256(X[0], T_out);
         
-        // 使用VPROLD进行循环左移
+        // 循环左移
         __m256i temp = X[0];
         X[0] = X[1]; X[1] = X[2]; X[2] = X[3]; X[3] = temp;
     }
@@ -270,7 +260,7 @@ void sm4_encrypt_vprold_batch(const uint8_t *key, const uint8_t *plaintext,
         // 使用512位向量处理多个块
         __m512i data = _mm512_loadu_si512(in);
         
-        // 简化的批量处理
+        // 批量处理
         for(int r = 0; r < 32; ++r) {
             __m512i round_key = _mm512_set1_epi32(rk[r]);
             data = _mm512_xor_si512(data, round_key);
@@ -307,10 +297,7 @@ void sm4_decrypt_vprold_batch(const uint8_t *key, const uint8_t *ciphertext,
     }
 }
 
-// ============================================================================
 // 4. 性能测试和工具函数
-// ============================================================================
-
 const char* sm4_get_best_implementation(void) {
     if (sm4_vprold_available()) {
         return "VPROLD";
