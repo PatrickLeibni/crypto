@@ -22,9 +22,7 @@ def demo_requirement_a():
     print("=" * 60)
     print("要求a: SM2基础实现和优化")
     print("=" * 60)
-    
-    print("考虑到SM2用C语言来做比较复杂，使用Python实现SM2基础功能")
-    
+     
     # 创建SM2实例
     sm2 = SimpleSM2()
     
