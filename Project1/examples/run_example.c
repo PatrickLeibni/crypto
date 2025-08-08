@@ -190,7 +190,7 @@ void performance_comparison() {
     printf("吞吐量: %.2f MB/s\n", 
            (iterations * padded_len) / (ttable_time * 1024 * 1024));
     
-    // 测试AESNI优化（如果可用）
+    // 测试AESNI优化
     if (sm4_aesni_available()) {
         start = clock();
         for (int i = 0; i < iterations; i++) {
