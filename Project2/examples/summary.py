@@ -6,8 +6,8 @@
 
 import numpy as np
 
-# import cv2  # 未使用，注释掉
-# import matplotlib.pyplot as plt  # 未使用，注释掉
+# import cv2  
+# import matplotlib.pyplot as plt 
 from src.watermark import DigitalWatermark
 from src.robustness_test import RobustnessTester
 
@@ -17,32 +17,6 @@ def print_summary():
     print("=" * 60)
     print("基于数字水印的图片泄露检测系统")
     print("=" * 60)
-
-    print("\n📋 系统特点:")
-    print("• 基于DCT变换的数字水印嵌入和提取")
-    print("• 支持自定义水印消息和强度参数")
-    print("• 8种不同类型的鲁棒性测试")
-    print("• 详细的测试报告和可视化结果")
-    print("• 高PSNR值保证图片质量")
-
-    print("\n🔧 技术实现:")
-    print("• 使用8x8块的DCT变换")
-    print("• 在中频系数中嵌入水印")
-    print("• 基于汉明距离的相似度计算")
-    print("• 可调节的检测阈值")
-
-    print("\n📊 测试结果:")
-    print("• 原始水印检测成功率: 100%")
-    print("• 平均相似度: 0.7878")
-    print("• PSNR: 13.69 dB (高质量)")
-    print("• 噪声攻击检测成功率: 25%")
-    print("• 支持33种不同的攻击测试")
-
-    print("\n🎯 应用场景:")
-    print("• 图片版权保护")
-    print("• 数字内容认证")
-    print("• 图片泄露检测")
-    print("• 数字水印研究")
 
     print("\n📁 生成文件:")
     print("• sample_image.jpg - 原始测试图片")
@@ -140,15 +114,15 @@ def show_performance_metrics():
         lines = report.split("\n")
         for line in lines:
             if "总测试数:" in line:
-                print(f"📊 {line}")
+                print(f" {line}")
             elif "检测成功数:" in line:
-                print(f"📊 {line}")
+                print(f" {line}")
             elif "检测成功率:" in line:
-                print(f"📊 {line}")
+                print(f" {line}")
             elif "平均相似度:" in line:
-                print(f"📊 {line}")
+                print(f" {line}")
             elif "攻击类型分析:" in line:
-                print(f"\n📈 {line}")
+                print(f"\n {line}")
                 break
 
         # 显示攻击类型分析
@@ -158,7 +132,7 @@ def show_performance_metrics():
                 in_analysis = True
                 continue
             if in_analysis and "|" in line and "成功率:" in line:
-                print(f"📈 {line}")
+                print(f" {line}")
             elif in_analysis and line.strip() == "":
                 break
 
@@ -173,20 +147,13 @@ def main():
     show_performance_metrics()
 
     print("\n" + "=" * 60)
-    print("🎉 系统演示完成!")
+    print(" 系统演示完成!")
     print("=" * 60)
-    print("\n💡 使用建议:")
+    print("\n 使用建议:")
     print("• 调整 alpha 参数以平衡鲁棒性和不可见性")
     print("• 根据应用场景选择合适的检测阈值")
     print("• 定期更新水印算法以应对新的攻击")
     print("• 结合多种水印技术提高安全性")
-
-    print("\n📚 扩展方向:")
-    print("• 支持DWT、DFT等其他变换域")
-    print("• 实现自适应水印强度")
-    print("• 开发图形用户界面")
-    print("• 支持批量处理功能")
-
 
 if __name__ == "__main__":
     main()
