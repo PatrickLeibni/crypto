@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-// 读取输入文件（从outputs目录）
+// 读取输入文件
 const inputPath = path.join(__dirname, '..', 'outputs', 'input.json');
 const input = JSON.parse(fs.readFileSync(inputPath, 'utf8'));
 
