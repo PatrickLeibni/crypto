@@ -85,8 +85,6 @@ class HomomorphicEncryption:
         s_inv = gmpy2.invert(s, self.params.p)
         g_m = (c2 * s_inv) % self.params.p
         
-        # 计算离散对数（简化版本）
-        # 在实际应用中，这需要更高效的算法
         message = 0
         temp = 1
         while temp != g_m and message < self.params.p:
