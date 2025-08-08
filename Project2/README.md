@@ -281,13 +281,12 @@ make test
 # 代码格式化
 make format
 
+> **注意**: 这是一个本地项目，没有在线仓库。
+- 项目位置: 本地 `crypto/Project2/` 目录
 
 ## 📄 许可证
 
 本项目采用MIT许可证，详见 [LICENSE](LICENSE) 文件。
-
-> **注意**: 这是一个本地项目，没有在线仓库。
-- 项目位置: 本地 `crypto/Project2/` 目录
 
 ## 贡献
 
