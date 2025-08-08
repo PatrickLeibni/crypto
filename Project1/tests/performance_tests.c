@@ -171,7 +171,6 @@ void test_concurrent_performance() {
     printf("每线程迭代次数: %d\n", iterations_per_thread);
     printf("\n");
     
-    // 这里简化实现，实际应该使用多线程
     // 测试单线程下的性能作为基准
     uint8_t ciphertext[16];
     uint8_t decrypted[16];
