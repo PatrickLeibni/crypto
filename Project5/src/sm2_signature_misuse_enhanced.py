@@ -229,7 +229,7 @@ class EnhancedSM2SignatureMisuse:
         """SM2与ECDSA使用相同私钥d和随机数k导致私钥泄露攻击演示"""
         print("\n=== SM2-ECDSA Same Key Attack Demo ===")
         
-        # 生成密钥对（SM2和ECDSA使用相同私钥）
+        # 生成密钥对
         private_key, public_key = self.sm2.generate_keypair()
         
         # 模拟使用相同的k
@@ -239,7 +239,7 @@ class EnhancedSM2SignatureMisuse:
         message = b"Message for SM2-ECDSA attack"
         sm2_signature = self._sign_with_fixed_k(message, private_key, public_key, shared_k)
         
-        # 模拟ECDSA签名（使用相同私钥和k）
+        # 模拟ECDSA签名
         ecdsa_signature = self._simulate_weak_ecdsa_signature(message, private_key, shared_k)
         
         print(f"Message: {message}")
@@ -281,7 +281,7 @@ class EnhancedSM2SignatureMisuse:
         return r, s
     
     def _simulate_weak_ecdsa_signature(self, message: bytes, private_key: int, k: int) -> Tuple[int, int]:
-        """模拟弱ECDSA签名（用于攻击演示）"""
+        """模拟弱ECDSA签名"""
         # 计算R = k * G
         R = k * self.G
         
@@ -372,15 +372,7 @@ class EnhancedSM2SignatureMisuse:
         
         # 模拟弱验证器（故意不检查消息）
         bypass_success = self._simulate_weak_verification(different_messages, original_signature, public_key)
-        
-        # 分析验证绕过攻击
-        print(f"\n=== Verification Bypass Analysis ===")
-        print("签名验证绕过攻击原理：")
-        print("1. 如果签名验证时未检查消息内容")
-        print("2. 攻击者可以使用有效签名验证任意消息")
-        print("3. 这可能导致伪造签名的风险")
-        print("4. 防护措施：严格验证签名与消息的对应关系")
-        
+               
         return bypass_success
     
     def _simulate_weak_verification(self, messages: List[bytes], signature: Tuple[int, int], 
@@ -480,19 +472,7 @@ class EnhancedSM2SignatureMisuse:
         total_count = 5
         print(f"\n总成功率: {success_count}/{total_count} ({success_count/total_count*100:.1f}%)")
         
-        # 防护建议
-        print(f"\n" + "="*60)
-        print("=== 安全防护建议 ===")
-        print("="*60)
-        print("1. 严格保护随机数k，确保不泄露")
-        print("2. 每次签名使用不同的随机数k")
-        print("3. 不同用户使用不同的随机数生成器")
-        print("4. 避免SM2和ECDSA使用相同的私钥和随机数")
-        print("5. 实施严格的签名验证，检查消息内容")
-        print("6. 使用安全的随机数生成器")
-        print("7. 定期更新密钥对")
-        print("8. 实施签名验证的完整性检查")
-        
+       
         return {
             'k_leakage': k_leakage_success,
             'same_user_nonce_reuse': same_user_nonce_reuse_success,
@@ -503,20 +483,7 @@ class EnhancedSM2SignatureMisuse:
 
 
 def main():
-    """主函数：运行所有增强攻击演示"""
-    print("="*70)
-    print("增强版SM2签名算法误用POC验证")
-    print("Enhanced SM2 Signature Algorithm Misuse POC Verification")
-    print("="*70)
-    print("基于20250713-wen-sm2-public.pdf的增强签名算法误用分析")
-    print("包含以下5种攻击类型的POC验证：")
-    print("1. 泄露随机数k导致私钥泄露")
-    print("2. 同一用户重复使用随机数k")
-    print("3. 不同用户使用相同k")
-    print("4. SM2与ECDSA使用相同私钥d和随机数k")
-    print("5. 签名验证未检查消息等导致的问题")
-    print("="*70)
-    
+    """主函数：运行所有增强攻击演示"""    
     # 创建增强攻击演示实例
     enhanced_misuse_attacks = EnhancedSM2SignatureMisuse()
     
