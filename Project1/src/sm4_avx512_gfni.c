@@ -88,22 +88,22 @@ static __m512i sm4_t_avx512_gfni(__m512i x) {
     return sm4_l_avx512(sbox_result);
 }
 
-// 循环左移函数（标量版本）
+// 循环左移函数
 static uint32_t rotl(uint32_t x, int n) {
     return (x << n) | (x >> (32 - n));
 }
 
-// SM4线性变换L（标量版本）
+// SM4线性变换L
 static uint32_t sm4_l(uint32_t x) {
     return x ^ rotl(x, 2) ^ rotl(x, 10) ^ rotl(x, 18) ^ rotl(x, 24);
 }
 
-// SM4线性变换L'（标量版本）
+// SM4线性变换L'
 static uint32_t sm4_l_prime(uint32_t x) {
     return x ^ rotl(x, 13) ^ rotl(x, 23);
 }
 
-// SM4 T'函数（标量版本）
+// SM4 T'函数
 static uint32_t sm4_t_prime(uint32_t x) {
     uint32_t result = 0;
     result |= ((uint32_t)SM4_SBOX[(x >> 24) & 0xFF]) << 24;
