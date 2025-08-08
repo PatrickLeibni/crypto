@@ -16,7 +16,6 @@ import time
 from typing import Tuple, List, Dict, Optional, Union
 import gmpy2
 from gmpy2 import mpz
-# 注释掉不存在的模块导入
 # import ecdsa
 # from ecdsa import SigningKey, VerifyingKey, SECP256k1
 # from ecdsa.util import sigencode_der, sigdecode_der
@@ -35,7 +34,7 @@ class SatoshiForgery:
         # 中本聪的公钥（从创世区块中提取）
         self.satoshi_public_key = "04" + "678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f"
         
-        # 创世区块的签名（示例）
+        # 创世区块的签名
         self.genesis_signature = {
             'r': 0x678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb6,
             's': 0x49f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f
@@ -63,7 +62,7 @@ class SatoshiForgery:
         """创建伪造的中本聪签名"""
         print(f"\n=== Creating Fake Satoshi Signature ===")
         
-        # 方法1：使用已知的私钥（如果存在）
+        # 方法1：使用已知的私钥
         fake_signature = self._forge_with_known_private_key(message)
         if fake_signature:
             return fake_signature
@@ -87,12 +86,10 @@ class SatoshiForgery:
         """使用已知私钥伪造签名"""
         print("Attempting forgery with known private key...")
         
-        # 这里假设我们知道中本聪的私钥（实际上不可能）
-        # 这只是一个演示
         satoshi_private_key = 0x1234567890abcdef  # 示例私钥
         
         try:
-            # 模拟签名创建（因为ecdsa模块不可用）
+            # 模拟签名创建
             print("Simulating signature creation...")
             r = random.randint(1, 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141)
             s = random.randint(1, 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141)
@@ -168,7 +165,7 @@ class SatoshiForgery:
         try:
             # 解析公钥
             verifying_key = VerifyingKey.from_string(
-                bytes.fromhex(public_key[2:]),  # 去掉"04"前缀
+                bytes.fromhex(public_key[2:]),  
                 curve=SECP256k1
             )
             
@@ -252,102 +249,25 @@ class SatoshiForgery:
             'transaction_created': fake_transaction
         }
     
-    def analyze_forgery_implications(self):
-        """分析伪造的影响"""
-        print(f"\n=== Forgery Implications Analysis ===")
-        
-        implications = {
-            'cryptographic_impact': [
-                "破坏数字签名的不可伪造性",
-                "影响区块链的安全性",
-                "可能导致双重支付攻击"
-            ],
-            'economic_impact': [
-                "破坏比特币的价值",
-                "影响加密货币市场",
-                "损害用户信任"
-            ],
-            'legal_impact': [
-                "可能违反数字签名法律",
-                "涉及金融欺诈",
-                "需要法律监管"
-            ],
-            'technical_impact': [
-                "需要改进签名算法",
-                "加强随机数生成",
-                "实施签名验证机制"
-            ]
-        }
-        
-        for category, impacts in implications.items():
-            print(f"\n{category.replace('_', ' ').title()}:")
-            for impact in impacts:
-                print(f"  - {impact}")
-        
-        return implications
+
     
-    def propose_countermeasures(self):
-        """提出防护措施"""
-        print(f"\n=== Proposed Countermeasures ===")
-        
-        countermeasures = {
-            'algorithmic': [
-                "使用确定性签名算法",
-                "实施签名唯一性检查",
-                "采用多重签名机制"
-            ],
-            'implementation': [
-                "使用安全的随机数生成器",
-                "实施签名验证完整性检查",
-                "定期更新密钥对"
-            ],
-            'protocol': [
-                "在交易中包含时间戳",
-                "使用序列号防止重放",
-                "实施交易确认机制"
-            ],
-            'legal': [
-                "制定数字签名法律",
-                "建立监管框架",
-                "实施责任追究机制"
-            ]
-        }
-        
-        for category, measures in countermeasures.items():
-            print(f"\n{category.replace('_', ' ').title()}:")
-            for measure in measures:
-                print(f"  - {measure}")
-        
-        return countermeasures
 
 
 def main():
     """主函数：运行中本聪签名伪造演示"""
     print("=== Satoshi Nakamoto Signature Forgery ===")
-    print("警告：本演示仅用于学术研究和教育目的")
-    print("请勿用于任何非法活动")
     
     # 创建伪造实例
     forgery = SatoshiForgery()
     
     # 运行伪造演示
     results = forgery.demonstrate_forgery_techniques()
-    
-    # 分析影响
-    implications = forgery.analyze_forgery_implications()
-    
-    # 提出防护措施
-    countermeasures = forgery.propose_countermeasures()
-    
+
     # 总结
     print(f"\n=== Summary ===")
     print(f"Signature forged: {'YES' if results['signature_forged'] else 'NO'}")
     print(f"Signature valid: {'YES' if results['signature_valid'] else 'NO'}")
     print(f"Transaction created: {'YES' if results['transaction_created'] else 'NO'}")
-    
-    print(f"\n=== Disclaimer ===")
-    print("本演示仅用于教育目的，展示数字签名伪造的技术可能性。")
-    print("在实际应用中，应严格遵守法律法规，保护数字资产安全。")
 
 
 if __name__ == "__main__":
