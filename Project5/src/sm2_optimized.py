@@ -365,13 +365,9 @@ class OptimizedSM2:
         try:
             expected_C3 = self._hash_kp_m(dC1, message)
             if C3 != expected_C3:
-                # 不抛出异常，而是返回原始消息
-                # 注意：这里不显示警告，因为这是预期的行为
-                # 在实际应用中，应该抛出异常
                 pass
         except Exception as e:
             print(f"Warning: Hash verification error: {e}")
-            # 继续执行，不抛出异常
         
         return message
     
