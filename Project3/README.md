@@ -75,13 +75,13 @@ npx snarkjs wtns debug build/simple_test.wasm test_input.json build/simple_test_
 
 #### 3. 使用Groth16协议生成证明
 ```bash
-# 生成零知识证明（使用Groth16协议）
+# 生成零知识证明
 npx snarkjs plonk fullprove test_input.json build/simple_test.wasm build/simple_test_plonk.zkey test_groth16_proof.json test_groth16_public.json
 ```
 
 #### 4. 验证证明
 ```bash
-# 验证生成的证明（使用Groth16协议）
+# 验证生成的证明
 npx snarkjs plonk verify build/simple_test_plonk_verification_key.json test_groth16_public.json test_groth16_proof.json
 ```
 
