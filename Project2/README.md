@@ -24,8 +24,6 @@ digital-watermark/
 │   └── __init__.py        # 包初始化文件
 ├── tests/                 # 测试套件
 ├── examples/              # 示例代码
-├── data/                  # 数据文件
-│   └── results/          # 测试结果
 ├── docs/                  # 文档
 ├── cli.py                # 命令行工具
 ├── utils.py              # 工具函数
