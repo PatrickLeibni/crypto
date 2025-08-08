@@ -8,7 +8,6 @@ from setuptools import setup, find_packages
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-# 直接定义依赖，不再读取requirements.txt
 requirements = [
     "opencv-python>=4.5.0",
     "numpy>=1.19.0",
@@ -18,13 +17,9 @@ requirements = [
 
 setup(
     name="digital-watermark",
-    version="1.0.0",
-    author="Digital Watermark Team",
-    author_email="watermark@example.com",
     description="基于DCT变换的数字水印系统",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/example/digital-watermark",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
