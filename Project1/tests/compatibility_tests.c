@@ -130,7 +130,7 @@ void test_concurrent_safety() {
     const int iterations = 1000;
     int passed = 0;
     
-    // 简化测试，模拟并发调用
+    // 模拟并发调用
     for (int t = 0; t < threads; t++) {
         for (int i = 0; i < iterations; i++) {
             uint8_t ciphertext[16];
@@ -153,8 +153,8 @@ void test_concurrent_safety() {
 void test_error_handling() {
     printf("=== 错误处理测试 ===\n");
     
-    // 测试空指针（跳过，可能不安全）
-    printf("空指针测试: 跳过（可能不安全）\n");
+    // 测试空指针（跳过）
+    printf("空指针测试: 跳过 \n");
     
     // 测试无效数据
     uint8_t invalid_key[16] = {0};
@@ -162,7 +162,7 @@ void test_error_handling() {
     uint8_t ciphertext[16];
     uint8_t decrypted[16];
     
-    // 应该能处理全零数据
+    // 处理全零数据
     sm4_encrypt(invalid_key, invalid_plaintext, ciphertext);
     sm4_decrypt(invalid_key, ciphertext, decrypted);
     
