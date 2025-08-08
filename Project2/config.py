@@ -2,7 +2,7 @@
 数字水印系统配置文件
 """
 
-# import os  # 未使用，注释掉
+# import os  
 from pathlib import Path
 
 # 项目根目录
