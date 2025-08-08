@@ -57,7 +57,7 @@ cd crypto/Project2
 # 安装依赖
 pip install -r requirements.txt
 
-# 或者使用Makefile（如果可用）
+# 或者使用Makefile
 make install
 ```
 
