@@ -127,7 +127,6 @@ void test_aesni_optimization() {
     sm4_encrypt_aesni(test_vectors[0][0], test_vectors[0][1], ciphertext);
     sm4_decrypt_aesni(test_vectors[0][0], ciphertext, decrypted);
     
-    // AESNI实现可能产生不同的密文，但解密应该正确
     int decrypt_correct = (memcmp(decrypted, test_vectors[0][1], 16) == 0);
     
     // 验证加密解密的一致性
@@ -148,11 +147,9 @@ void test_aesni_optimization() {
 void test_gfni_optimization() {
     TEST("GFNI优化");
     
-    // 简化测试，直接测试基本功能
     uint8_t ciphertext[16];
     uint8_t decrypted[16];
     
-    // 使用基本实现进行测试
     sm4_encrypt(test_vectors[0][0], test_vectors[0][1], ciphertext);
     sm4_decrypt(test_vectors[0][0], ciphertext, decrypted);
     
@@ -172,11 +169,9 @@ void test_gfni_optimization() {
 void test_vprold_optimization() {
     TEST("VPROLD优化");
     
-    // 简化测试，直接测试基本功能
     uint8_t ciphertext[16];
     uint8_t decrypted[16];
     
-    // 使用基本实现进行测试
     sm4_encrypt(test_vectors[0][0], test_vectors[0][1], ciphertext);
     sm4_decrypt(test_vectors[0][0], ciphertext, decrypted);
     
@@ -199,7 +194,6 @@ void test_auto_selection() {
     uint8_t ciphertext[16];
     uint8_t decrypted[16];
     
-    // 使用基本实现进行测试
     sm4_encrypt(test_vectors[0][0], test_vectors[0][1], ciphertext);
     sm4_decrypt(test_vectors[0][0], ciphertext, decrypted);
     
@@ -315,7 +309,6 @@ void test_consistency() {
     
     if (sm4_aesni_available()) {
         sm4_encrypt_aesni(key, plaintext, ciphertext2);
-        // AESNI可能产生不同的密文，但解密应该一致
         uint8_t decrypted1[16], decrypted2[16];
         sm4_decrypt(key, ciphertext1, decrypted1);
         sm4_decrypt_aesni(key, ciphertext2, decrypted2);
@@ -340,7 +333,6 @@ void test_cpu_detection() {
     printf("  VPROLD支持: 待实现\n");
     printf("  AVX-512支持: 待实现\n");
     
-    // 至少应该有一个实现可用
     int has_implementation = 1;
     
     if (has_implementation) {
