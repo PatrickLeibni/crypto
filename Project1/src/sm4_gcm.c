@@ -5,9 +5,7 @@
 #include <time.h>
 #include <sys/time.h>
 
-// ============================================================================
-// 1. 128位无符号整数类型 (用于 GCM 计算)
-// ============================================================================
+// 1. 128位无符号整数类型
 typedef struct {
     uint64_t high;
     uint64_t low;
@@ -39,9 +37,7 @@ static inline int uint128_lsb(uint128_t x) {
     return x.low & 1;
 }
 
-// ============================================================================
 // 2. 辅助函数 (字节转换)
-// ============================================================================
 static uint128_t bytes_to_uint128(const uint8_t* bytes, size_t offset) {
     uint128_t res = {0, 0};
     for (int i = 0; i < 8; ++i) {
@@ -62,9 +58,7 @@ static void uint128_to_bytes(uint128_t n, uint8_t* bytes) {
     }
 }
 
-// ============================================================================
-// 3. 核心SM4加密实现
-// ============================================================================
+// 3. SM4加密实现
 static const uint8_t SM4_SBOX[256] = {
     0xd6,0x90,0xe9,0xfe,0xcc,0xe1,0x3d,0xb7,0x16,0xb6,0x14,0xc2,0x28,0xfb,0x2c,0x05,
     0x2b,0x67,0x9a,0x76,0x2a,0xbe,0x04,0xc3,0xaa,0x44,0x13,0x26,0x49,0x86,0x06,0x99,
@@ -154,9 +148,7 @@ static void sm4_crypt_ecb(const uint8_t* in, uint8_t* out, const uint32_t* rk) {
     }
 }
 
-// ============================================================================
 // 4. GCM 实现
-// ============================================================================
 static uint128_t gf_mult_slow(uint128_t a, uint128_t b) {
     uint128_t res = {0, 0};
     uint128_t v = a;
@@ -174,7 +166,7 @@ static uint128_t gf_mult_slow(uint128_t a, uint128_t b) {
     return res;
 }
 
-// 生成真正的快速乘法表
+// 生成快速乘法表
 static void generate_gmult_tables(const uint128_t H, uint128_t* tables) {
     // 初始化表 - 计算 H * i 对于 i = 0 到 15
     for (int i = 0; i < 16; ++i) {
@@ -256,7 +248,6 @@ static int sm4_gcm_init(sm4_gcm_ctx_t* ctx, const uint8_t* key, const uint8_t* i
 
 // 清理SM4-GCM上下文
 static void sm4_gcm_cleanup(sm4_gcm_ctx_t* ctx) {
-    // 目前没有需要清理的动态内存
     (void)ctx;
 }
 
@@ -477,10 +468,7 @@ static int sm4_gcm_decrypt_internal(sm4_gcm_ctx_t* ctx, const uint8_t* aad, size
     return 0;
 }
 
-// ============================================================================
 // 5. 公共API实现
-// ============================================================================
-
 // 生成IV
 void sm4_gcm_generate_iv(uint8_t *iv) {
     if (!iv) return;
