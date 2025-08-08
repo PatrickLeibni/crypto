@@ -325,10 +325,7 @@ def main():
         comparison_example()
         
         print(f"\n=== All Examples Completed Successfully ===")
-        print("✓ Basic SM2 functionality")
-        print("✓ Optimized SM2 performance")
-        print("✓ Security features validation")
-        print("✓ Performance comparison analysis")
+
         
     except Exception as e:
         print(f"Error running examples: {e}")
