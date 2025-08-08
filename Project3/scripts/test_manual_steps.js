@@ -49,8 +49,8 @@ try {
     const proofSize = fs.statSync(path.join(__dirname, '../proofs/test_groth16_proof.json')).size;
     const publicInputs = fs.readFileSync(path.join(__dirname, '../proofs/test_groth16_public.json'), 'utf8');
     
-    console.log(`📄 证明文件大小: ${proofSize} 字节`);
-    console.log(`📄 公开输入: ${publicInputs.trim()}`);
+    console.log(` 证明文件大小: ${proofSize} 字节`);
+    console.log(` 公开输入: ${publicInputs.trim()}`);
     console.log('✅ 结果查看完成\n');
 
     console.log(' 手动步骤测试成功！');
