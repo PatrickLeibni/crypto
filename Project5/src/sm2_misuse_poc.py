@@ -210,9 +210,7 @@ class SM2MisusePOC:
         """创建可延展的签名"""
         r, s = signature
         
-        # 简单的可延展性：修改s值
-        # 在实际SM2中，可延展性可能更复杂
-        malleable_s = (s + 1) % self.sm2.n  # 简单的修改示例
+        malleable_s = (s + 1) % self.sm2.n  
         
         return r, malleable_s
     
@@ -227,7 +225,6 @@ class SM2MisusePOC:
         print(f"公钥: ({public_key[0]}, {public_key[1]})")
         
         # 模拟已知部分私钥信息的情况
-        # 假设我们知道私钥的某些位
         known_bits = 8  # 假设知道低8位
         known_part = private_key & ((1 << known_bits) - 1)
         
@@ -256,10 +253,7 @@ class SM2MisusePOC:
     
     def _recover_private_key_with_partial_info(self, public_key: Tuple[int, int], 
                                              known_part: int, known_bits: int) -> Optional[int]:
-        """使用部分私钥信息恢复完整私钥"""
-        # 简化的密钥恢复算法
-        # 在实际应用中，这需要更复杂的数学方法
-        
+        """使用部分私钥信息恢复完整私钥"""  
         mask = (1 << known_bits) - 1
         unknown_bits = 256 - known_bits
         
@@ -307,14 +301,6 @@ class SM2MisusePOC:
         print(f"签名可延展性: {'成功' if malleability_success else '失败'}")
         print(f"密钥恢复攻击: {'成功' if key_recovery_success else '失败'}")
         
-        # 防护建议
-        print(f"\n=== 安全建议 ===")
-        print("1. 使用安全的随机数生成器")
-        print("2. 在签名中包含时间戳或随机数")
-        print("3. 验证签名的唯一性")
-        print("4. 使用硬件安全模块保护私钥")
-        print("5. 定期更新密钥对")
-        print("6. 实施签名验证的完整性检查")
         
         return {
             'replay': replay_success,
