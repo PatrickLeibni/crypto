@@ -119,7 +119,7 @@ static void compression_function(uint32_t *state, const uint8_t *block) {
         E = P0(TT2);
     }
     
-    // Update state (add to original state)
+    // Update state
     state[0] += A;
     state[1] += B;
     state[2] += C;
@@ -171,7 +171,7 @@ void create_padding(uint8_t *padding, size_t original_len, size_t *padding_len) 
     }
 }
 
-// Length extension attack implementation - 真正的长度扩展攻击
+// Length extension attack implementation 
 int sm3_length_extension_attack(const uint8_t *original_digest,
                                const uint8_t *original_message, 
                                size_t original_len,
@@ -208,7 +208,7 @@ int sm3_length_extension_attack(const uint8_t *original_digest,
     return 0; // Success
 }
 
-// Verify length extension attack
+// 验证长度扩展攻击
 int sm3_verify_length_extension_attack(const uint8_t *original_message, 
                                       size_t original_len,
                                       const uint8_t *extension, 
