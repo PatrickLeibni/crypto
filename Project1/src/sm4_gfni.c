@@ -6,10 +6,7 @@
 #include <stdlib.h>
 #include <immintrin.h>
 
-// ============================================================================
 // 1. SM4 S盒定义
-// ============================================================================
-
 static const uint8_t SM4_SBOX[256] = {
     0xd6,0x90,0xe9,0xfe,0xcc,0xe1,0x3d,0xb7,0x16,0xb6,0x14,0xc2,0x28,0xfb,0x2c,0x05,
     0x2b,0x67,0x9a,0x76,0x2a,0xbe,0x04,0xc3,0xaa,0x44,0x13,0x26,0x49,0x86,0x06,0x99,
@@ -29,10 +26,7 @@ static const uint8_t SM4_SBOX[256] = {
     0x18,0xf0,0x7d,0xec,0x3a,0xdc,0x4d,0x20,0x79,0xee,0x5f,0x3e,0xd7,0xcb,0x39,0x48
 };
 
-// ============================================================================
 // 2. 基本SM4函数
-// ============================================================================
-
 static uint32_t rotl(uint32_t x, int n) {
     return (x << n) | (x >> (32 - n));
 }
@@ -103,10 +97,7 @@ static void sm4_crypt_ecb(const uint8_t* in, uint8_t* out, const uint32_t* rk) {
     }
 }
 
-// ============================================================================
 // 3. GFNI优化实现
-// ============================================================================
-
 int sm4_gfni_available(void) {
     unsigned int eax, ebx, ecx, edx;
     if (__get_cpuid(7, &eax, &ebx, &ecx, &edx)) {
@@ -129,7 +120,7 @@ static __m256i sm4_sbox_gfni_256(__m256i x) {
 
 static __m512i sm4_sbox_gfni_512(__m512i x) {
     // 512位版本的GFNI S盒替换
-    __m512i sbox_table = _mm512_set1_epi8(0xd6); // 简化的实现
+    __m512i sbox_table = _mm512_set1_epi8(0xd6);
     
     return _mm512_gf2p8affine_epi64_epi8(x, sbox_table, 0);
 }
