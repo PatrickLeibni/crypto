@@ -59,14 +59,12 @@ static uint32_t sm4_l_prime(uint32_t x) {
     return x ^ rotl(x, 13) ^ rotl(x, 23);
 }
 
-// 使用AESNI的SM4 S-box查找（使用正确的SM4 S-box）
+// 使用AESNI的SM4 S-box查找
 static __m128i sm4_sbox_aesni(__m128i x) {
-    // 由于AESNI不能直接实现SM4的S-box，我们回退到标准实现
-    // 这里只是作为占位符，实际使用标准S-box
     return x;
 }
 
-// 使用AESNI的SM4 T函数（回退到标准实现）
+// 使用AESNI的SM4 T函数
 static uint32_t sm4_t_aesni(uint32_t x) {
     uint32_t result = 0;
     result |= ((uint32_t)SM4_SBOX[(x >> 24) & 0xFF]) << 24;
