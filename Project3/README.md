@@ -16,21 +16,24 @@
 crypto/Project3/
 ├── 📄 README.md                    # 项目总述文档
 ├── 📄 package.json                 # 项目配置
-├── 📄 test_circuit.js              # 完整测试脚本
+├── 📁 scripts/                     # 源代码目录
+│       ├── 📄 test_circuit.js
+│       └── 📄 test_manual_steps.js
 ├── 📁 src/                         # 源代码目录
 │   ├── 📁 circuits/                # 电路文件
 │   │   └── 📄 poseidon2_accurate.circom
 │   └── 📄 generate_witness.js      # 脚本文件
 ├── 📁 build/                       # 编译输出
-│   ├── 📄 poseidon2_accurate.r1cs
-│   ├── 📄 poseidon2_accurate.wasm
-│   ├── 📄 poseidon2_accurate.sym
-│   ├── 📄 poseidon2_plonk.zkey
-│   ├── 📄 poseidon2_plonk_verification_key.json
-│   └── 📄 witness.wtns
+│   ├── 📄 port12_*.ptau
+│   ├── 📄 test.wasm
+│   ├── 📄 test.sym
+│   ├── 📄 test.r1cs
+│   ├── 📄 test_witness.wtns
+│   ├── 📄 test_groth16.zkey
+│   └── ```
 └── 📁 outputs/                     # 其他输出
-    ├── 📄 pot12_*.ptau
-    └── 📄 input.json
+    ├── 📄 test_groth16_*.json
+    └── 📄 test_input.json
 ```
 
 ## 如何进行测试
