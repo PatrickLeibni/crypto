@@ -4,7 +4,7 @@
 
 ## 项目概述
 
-SM4是中国国家密码管理局发布的分组密码算法，采用128位密钥和128位分组长度。本项目提供了从基本实现到AVX-512优化的完整解决方案。
+SM4是中国国家密码管理局发布的分组密码算法，采用128位密钥和128位分组长度。本项目提供了从基本实现、各种优化、GCM模式实现的完整解决方案。
 
 ## 实现特性
 
@@ -13,7 +13,7 @@ SM4是中国国家密码管理局发布的分组密码算法，采用128位密�
 - **T-table优化** (sm4_ttable.c): 预计算优化，性能提升2-3倍
 - **AESNI优化** (sm4_aesni.c): 利用Intel AES指令集，性能提升3-5倍
 - **GFNI优化** (sm4_gfni.c): 使用伽罗瓦域新指令，适用于支持GFNI的处理器
-- **VPROLD优化** (sm4_vprold.c): 使用最新的VPROLD指令集，最优性能
+- **VPROLD优化** (sm4_vprold.c): 使用最新的VPROLD指令集
 - **AVX-512优化** (sm4_avx512_*.c): 512位向量批量处理，最高性能实现
 - **GCM模式** (sm4_gcm.c): 支持SM4-GCM认证加密
 
@@ -70,6 +70,7 @@ make examples
 ./examples/run_example
 
 详细使用说明请查看 [examples/README.md](examples/README.md)
+完整编译测试可查看 [Makefile]
 
 ### 基本加密/解密
 ```c
