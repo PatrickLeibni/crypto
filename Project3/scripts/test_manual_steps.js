@@ -59,7 +59,7 @@ try {
 
 } catch (error) {
     console.error('❌ 手动步骤测试失败:', error.message);
-    console.log('\n💡 建议:');
+    console.log('\n 建议:');
     console.log('   - 检查文件路径是否正确');
     console.log('   - 确保所有依赖已安装');
     console.log('   - 使用自动脚本: node working_solution.js');
