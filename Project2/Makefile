@@ -127,7 +127,7 @@ clean-output:
 	@rm -rf output/*
 	@echo "输出文件已清理"
 
-# 运行完整演示（推荐）
+# 运行完整演示
 run-demo:
 	@echo "运行完整演示..."
 	python examples/demo.py
