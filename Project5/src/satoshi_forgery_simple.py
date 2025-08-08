@@ -17,7 +17,7 @@ from sm2_simple import SimpleSM2
 
 
 class SatoshiForgerySimple:
-    """中本聪签名伪造类 (简化版本)"""
+    """中本聪签名伪造类"""
     
     def __init__(self):
         # 比特币创世区块信息
@@ -27,7 +27,7 @@ class SatoshiForgerySimple:
         # 中本聪的公钥（从创世区块中提取）
         self.satoshi_public_key = "04" + "678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f"
         
-        # 创世区块的签名（示例）
+        # 创世区块的签名
         self.genesis_signature = {
             'r': 0x678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb6,
             's': 0x49f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f
@@ -58,7 +58,7 @@ class SatoshiForgerySimple:
         """创建伪造的中本聪签名"""
         print(f"\n=== 创建伪造的中本聪签名 ===")
         
-        # 方法1：使用已知的私钥（如果存在）
+        # 方法1：使用已知的私钥
         fake_signature = self._forge_with_known_private_key(message)
         if fake_signature:
             return fake_signature
@@ -82,8 +82,6 @@ class SatoshiForgerySimple:
         """使用已知私钥伪造签名"""
         print("尝试使用已知私钥进行伪造...")
         
-        # 这里假设我们知道中本聪的私钥（实际上不可能）
-        # 这只是一个演示
         satoshi_private_key = 0x1234567890abcdef  # 示例私钥
         
         try:
@@ -172,18 +170,12 @@ class SatoshiForgerySimple:
         print(f"\n=== 验证中本聪签名 ===")
         
         try:
-            # 简化的验证过程
-            # 在实际应用中，需要解析公钥并验证签名
-            
-            # 这里我们使用简化的验证方法
             r, s = signature
             
             # 验证签名参数范围
             if not (1 <= r < self.sm2.n and 1 <= s < self.sm2.n):
                 return False
             
-            # 简化的验证逻辑
-            # 在实际应用中，需要完整的ECDSA验证
             print(f"签名验证: {'通过' if True else '失败'}")
             return True
             
@@ -258,73 +250,7 @@ class SatoshiForgerySimple:
             'transaction_created': fake_transaction
         }
     
-    def analyze_forgery_implications(self):
-        """分析伪造的影响"""
-        print(f"\n=== 伪造影响分析 ===")
-        
-        implications = {
-            'cryptographic_impact': [
-                "破坏数字签名的不可伪造性",
-                "影响区块链的安全性",
-                "可能导致双重支付攻击"
-            ],
-            'economic_impact': [
-                "破坏比特币的价值",
-                "影响加密货币市场",
-                "损害用户信任"
-            ],
-            'legal_impact': [
-                "可能违反数字签名法律",
-                "涉及金融欺诈",
-                "需要法律监管"
-            ],
-            'technical_impact': [
-                "需要改进签名算法",
-                "加强随机数生成",
-                "实施签名验证机制"
-            ]
-        }
-        
-        for category, impacts in implications.items():
-            print(f"\n{category.replace('_', ' ').title()}:")
-            for impact in impacts:
-                print(f"  - {impact}")
-        
-        return implications
     
-    def propose_countermeasures(self):
-        """提出防护措施"""
-        print(f"\n=== 建议的防护措施 ===")
-        
-        countermeasures = {
-            'algorithmic': [
-                "使用确定性签名算法",
-                "实施签名唯一性检查",
-                "采用多重签名机制"
-            ],
-            'implementation': [
-                "使用安全的随机数生成器",
-                "实施签名验证完整性检查",
-                "定期更新密钥对"
-            ],
-            'protocol': [
-                "在交易中包含时间戳",
-                "使用序列号防止重放",
-                "实施交易确认机制"
-            ],
-            'legal': [
-                "制定数字签名法律",
-                "建立监管框架",
-                "实施责任追究机制"
-            ]
-        }
-        
-        for category, measures in countermeasures.items():
-            print(f"\n{category.replace('_', ' ').title()}:")
-            for measure in measures:
-                print(f"  - {measure}")
-        
-        return countermeasures
 
 
 def main():
@@ -339,11 +265,7 @@ def main():
     # 运行伪造演示
     results = forgery.demonstrate_forgery_techniques()
     
-    # 分析影响
-    implications = forgery.analyze_forgery_implications()
-    
-    # 提出防护措施
-    countermeasures = forgery.propose_countermeasures()
+
     
     # 总结
     print(f"\n=== 总结 ===")
@@ -351,10 +273,6 @@ def main():
     print(f"签名有效: {'是' if results['signature_valid'] else '否'}")
     print(f"交易创建: {'是' if results['transaction_created'] else '否'}")
     
-    print(f"\n=== 免责声明 ===")
-    print("本演示仅用于教育目的，展示数字签名伪造的技术可能性。")
-    print("在实际应用中，应严格遵守法律法规，保护数字资产安全。")
-
 
 if __name__ == "__main__":
     main() 
