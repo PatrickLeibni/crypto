@@ -353,8 +353,6 @@ def run_comprehensive_forgery_demo():
     demonstrate_forgery_detection()
     
     print("\n=== 演示完成 ===")
-    print("注意：本演示仅用于学术研究和安全测试目的")
-    print("请勿用于任何非法用途")
 
 
 if __name__ == "__main__":
