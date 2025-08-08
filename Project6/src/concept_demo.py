@@ -183,7 +183,6 @@ class PasswordCheckupDemo:
             print("  - 启用双因素认证")
         else:
             print("\n✅ 所有密码都是安全的")
-            print("\n继续保持良好的密码习惯")
         
         return intersection, total_breaches
     
@@ -223,18 +222,12 @@ class PasswordCheckupDemo:
         print("3. 使用DDH协议与Google服务器通信")
         print("4. 获得泄露统计信息，无需上传明文密码")
         print("5. 提供安全建议和密码更改提醒")
-        
-        print("\n技术优势:")
-        print("✅ 隐私保护: 用户密码不会离开本地")
-        print("✅ 安全性: 基于密码学安全假设")
-        print("✅ 可扩展性: 支持大规模数据集")
-        print("✅ 实用性: 已在Google Chrome中部署")
+
 
 
 def main():
     """主函数"""
     print("=== Google Password Checkup 概念演示 ===")
-    print("基于刘巍然老师的报告")
     print("论文: https://eprint.iacr.org/2019/723.pdf")
     print("")
     
@@ -253,8 +246,6 @@ def main():
     print("✅ 性能分析")
     print("✅ 真实世界应用")
     print("")
-    print("本项目成功实现了Google Password Checkup的核心概念！")
-
 
 if __name__ == "__main__":
     main() 
