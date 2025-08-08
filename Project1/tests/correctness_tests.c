@@ -58,7 +58,7 @@ int test_implementation(const char *name,
                        int available) {
     if (!available) {
         printf("⚠ %s: 不支持，跳过测试\n", name);
-        return 1; // 不支持不应该被视为失败
+        return 1; 
     }
     
     printf("测试 %s:\n", name);
