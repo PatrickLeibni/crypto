@@ -20,7 +20,7 @@ SM4是中国国家密码管理局发布的分组密码算法，采用128位密�
 ## 项目结构
 
 ```
-crypto/Project1/
+Project1/
 ├── include/                 # 头文件
 ├── src/                     # 源代码
 │   ├── sm4_basic.c         # 基本实现
