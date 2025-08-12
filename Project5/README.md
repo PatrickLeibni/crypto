@@ -77,7 +77,7 @@ python src/satoshi_forgery.py
 
 ### 安装依赖
 ```bash
-cd crypto/Project5
+cd Project5
 pip install -r requirements.txt
 ```
 
