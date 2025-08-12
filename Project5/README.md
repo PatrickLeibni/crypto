@@ -32,7 +32,7 @@
 ## 项目结构
 
 ```
-crypto/Project5/
+Project5/
 ├── README.md                    # 项目总览文档（本文件）
 ├── KNOWLEDGE_POINTS.md          # 技术知识点文档
 ├── requirements.txt             # Python依赖包
