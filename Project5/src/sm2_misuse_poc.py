@@ -14,7 +14,7 @@ import time
 from typing import Tuple, List, Dict, Optional
 import gmpy2
 from gmpy2 import mpz
-from sm2_basic import SM2, SM2Point, SM2Curve
+from .sm2_basic import SM2, SM2Point, SM2Curve
 
 
 class SM2SignatureMisuse:
