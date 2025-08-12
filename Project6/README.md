@@ -23,7 +23,7 @@ Google Password Checkup是一个隐私保护的安全检查服务，允许用户
 ## 项目结构
 
 ```
-crypto/Project6/
+Project6/
 ├── README.md                    # 项目说明文档
 ├── KNOWLEDGE_POINTS.md          # 技术知识点文档
 ├── requirements.txt             # Python依赖包
@@ -61,7 +61,7 @@ crypto/Project6/
 
 ### 安装依赖
 ```bash
-cd crypto/Project6
+cd Project6
 pip install -r requirements.txt
 ```
 
