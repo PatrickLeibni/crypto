@@ -65,7 +65,7 @@ python src/performance.py  # 性能测试
 
 ### 2. 签名算法误用POC验证
 ```bash
-python src/sm2_misuse_poc.py
+python -m src.sm2_misuse_poc
 ```
 
 ### 3. 中本聪数字签名伪造
