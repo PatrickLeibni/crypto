@@ -84,7 +84,7 @@ pip install -r requirements.txt
 ### 运行测试
 ```bash
 # 运行单元测试
-python -m pytest tests/
+PYTHONPATH=./ python -m pytest tests/
 
 # 运行基础功能测试
 python3 tests/test_sm2_basic.py
