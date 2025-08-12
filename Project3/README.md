@@ -13,7 +13,7 @@
 ### 🗂️ 文件结构
 
 ```
-crypto/Project3/
+Project3/
 ├── 📄 README.md                    # 项目总述文档
 ├── 📄 package.json                 # 项目配置
 ├── 📁 scripts/                     # 源代码目录
