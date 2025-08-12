@@ -50,7 +50,7 @@ digital-watermark/
 ```bash
 # 下载或克隆项目到本地
 # 进入项目目录
-cd crypto/Project2
+cd Project2
 
 # 安装依赖
 pip install -r requirements.txt
