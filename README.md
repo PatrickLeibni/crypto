@@ -1,8 +1,8 @@
 # Crypto Projects Collection
 
 ## Personal Info
-学号：202200460080
-姓名：徐培硕
+-学号：202200460080
+-姓名：徐培硕
 
 ## 项目概述
 
