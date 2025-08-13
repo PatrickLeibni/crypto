@@ -59,8 +59,6 @@ make perf
 make test-all
 ```
 
-## 使用示例
-
 ### 运行示例程序
 ```bash
 # 编译所有示例
@@ -72,6 +70,7 @@ make examples
 详细使用说明请查看 [examples/README.md](examples/README.md)
 完整编译测试可查看 [Makefile]
 
+```
 ### 基本加密/解密
 ```c
 #include "sm4_basic.h"
