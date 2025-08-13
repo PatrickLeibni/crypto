@@ -53,6 +53,23 @@ Project5/
 └── .benchmarks/               # 基准测试结果
 ```
 
+## 安装和运行
+
+### 安装依赖
+```bash
+cd Project5
+pip install -r requirements.txt
+```
+
+### 运行测试
+```bash
+# 运行单元测试
+PYTHONPATH=./ python -m pytest tests/
+
+# 运行基础功能测试
+PYTHONPATH=. python3 tests/test_sm2_basic.py
+```
+
 ## 快速运行指南
 
 ### 1. SM2基础实现与算法优化
@@ -71,23 +88,6 @@ python -m src.sm2_misuse_poc
 ### 3. 中本聪数字签名伪造
 ```bash
 python src/satoshi_forgery.py
-```
-
-## 安装和运行
-
-### 安装依赖
-```bash
-cd Project5
-pip install -r requirements.txt
-```
-
-### 运行测试
-```bash
-# 运行单元测试
-PYTHONPATH=./ python -m pytest tests/
-
-# 运行基础功能测试
-PYTHONPATH=. python3 tests/test_sm2_basic.py
 ```
 
 ## 测试说明
