@@ -67,8 +67,8 @@ make examples
 # 运行综合示例
 ./examples/run_example
 
-详细使用说明请查看 [examples/README.md](examples/README.md)
-完整编译测试可查看 [Makefile]
+详细使用说明请查看 [examples/README.md]
+完整编译测试请查看 [Makefile]
 
 ```
 ### 基本加密/解密
